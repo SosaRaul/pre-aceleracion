@@ -5,12 +5,12 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    render json: @movies
+    render json: @movies , each_serializer: MovieListSerializer
   end
 
   # GET /movies/1
   def show
-    render json: @movie
+    render json: @movie ,serializer: MovieDetailSerializer
   end
 
   # POST /movies
@@ -46,6 +46,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :creation_date, :rating)
+      params.require(:movie).permit(:title, :creation_date, :rating, :image, :genre_id)
     end
 end

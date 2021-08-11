@@ -5,12 +5,12 @@ class CharactersController < ApplicationController
   def index
     @characters = Character.all
 
-    render json: @characters
+    render json: @characters, each_serializer: CharacterListSerializer
   end
 
   # GET /characters/1
   def show
-    render json: @character
+    render json: @character, serializer: CharacterDetailSerializer  
   end
 
   # POST /characters
@@ -46,6 +46,6 @@ class CharactersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_params
-      params.require(:character).permit(:name, :age, :weight, :history , :image)
+      params.require(:character).permit(:name, :age, :weight, :history , :image,movie_ids: [])
     end
 end
