@@ -5,12 +5,12 @@ class CharactersController < ApplicationController
   def index
     @characters = Character.all
 
-    render json: @characters, each_serializer: CharacterListSerializer
+    render json: @characters, each_serializer: CharacterSerializers::ListSerializer
   end
 
   # GET /characters/1
   def show
-    render json: @character, serializer: CharacterDetailSerializer  
+    render json: @character, serializer: CharacterSerializers::DetailSerializer  
   end
 
   # POST /characters

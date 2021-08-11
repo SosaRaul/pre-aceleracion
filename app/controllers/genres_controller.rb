@@ -5,12 +5,12 @@ class GenresController < ApplicationController
   def index
     @genres = Genre.all
 
-    render json: @genres
+    render json: @genres, each_serializer: GenreSerializers::ListSerializer
   end
 
   # GET /genres/1
   def show
-    render json: @genre
+    render json: @genre, serializer: GenreSerializers::DetailSerializer
   end
 
   # POST /genres

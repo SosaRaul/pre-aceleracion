@@ -4,4 +4,6 @@ class Character < ApplicationRecord
     has_many :actors 
     has_many :movies, through: :actors
     has_one_attached  :image 
+    delegate :url, to: :image, prefix: true 
+
 end
