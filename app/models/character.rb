@@ -6,4 +6,8 @@ class Character < ApplicationRecord
     has_one_attached  :image 
     delegate :url, to: :image, prefix: true 
 
+    scope :by_movies, ->(movies) { joins(:movies).where('movies.id IN (?)',movies)}
+    
+
+
 end

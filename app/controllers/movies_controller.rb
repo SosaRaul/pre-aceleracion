@@ -1,9 +1,14 @@
 class MoviesController < ApplicationController
+  include Sift
+
   before_action :set_movie, only: [:show, :update, :destroy]
 
+  filter_on :name, type: :string
+  sort_on   :creation_date, type: :date
+  filter_on :genre, type: :scope, internal_name: :by_genre
   # GET /movies
   def index
-    @movies = Movie.all
+    @movies = filtrate(Movie.all)
 
     render json: @movies , each_serializer: MovieSerializers::ListSerializer
   end

@@ -1,10 +1,17 @@
 class CharactersController < ApplicationController
+  include Sift
+
   before_action :set_character, only: [:show, :update, :destroy]
 
+  filter_on :name, type: :string
+  filter_on :age,  type: :int
+  sort_on   :creation_date, type: :date
+  filter_on :movies, type: :scope, internal_name: :by_movies 
+  
+  
   # GET /characters
   def index
-    @characters = Character.all
-
+    @characters = filtrate(Character.all)
     render json: @characters, each_serializer: CharacterSerializers::ListSerializer
   end
 
