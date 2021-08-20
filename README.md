@@ -1,7 +1,7 @@
 # README
-#Challenge para la pre-aceleración de Alkemy
+# Challenge para la pre-aceleración de Alkemy
 
-##API para explorar el mundo de Disney!
+## API para explorar el mundo de Disney!
 
 
 
