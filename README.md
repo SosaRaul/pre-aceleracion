@@ -8,6 +8,7 @@
 * CRUD de personajes
 * Búsquedaa de personajes
 * Listado de personajes
+/characters
 * Detalle de cada personaje
 * Listado de películas en las que participa el personaje
 * Detalle de cada película, con sus personajes asociados.
